@@ -1,18 +1,42 @@
 // Textos
+let numeroSecreto = gerarNumeroAleatorio();
+let tentativas = 1;
 
-let titulo = document.querySelector('h1');
-titulo.innerHTML='';
+function gerarNumeroAleatorio(){
+    return parseInt(Math.random() * 10 + 1);
+ }
 
-let texto = document.querySelector('p');
-texto.innerHTML='Escolha um número de 0 a 10';
+function exibirTextoNaTela(tag, texto){
+    let titulo = document.querySelector(tag);
+    titulo.innerHTML = texto;
+}
 
+exibirTextoNaTela ( 'h1', 'Jogo do número secreto');
+exibirTextoNaTela ( 'p', 'Escolha um número entre 1 e 10');
 
 //------------------------------------------------------------------------------------------------
 // Ação botões
 
-
 function verificarChute(){
-    console.log ('Botão clicado');
+        
+    let chute = document.querySelector("input").value;
+    console.log (numeroSecreto);
+    //console.log( chute == numeroSecreto);
+
+    if ( chute == numeroSecreto){
+        exibirTextoNaTela ( 'h1', 'Acertou!');
+        let mensagemTentativa = `Você acertou em ${tentativas} tentativas`
+        exibirTextoNaTela ( 'p', `${mensagemTentativa}`);
+    }else{
+        if ( chute > numeroSecreto ){ 
+            exibirTextoNaTela ( 'h1', 'Quase!');
+            exibirTextoNaTela ( 'p', 'O chute é maior que o número secreto!!!');
+        }else( chute < numeroSecreto );{
+            exibirTextoNaTela ( 'h1', 'Quase!');
+            exibirTextoNaTela ( 'p', 'O chute é menor que o número secreto!!!');
+        }
+    }
+    tentativas++;
 }
 
 function soma(){
