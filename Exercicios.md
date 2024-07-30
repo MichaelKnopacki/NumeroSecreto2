@@ -101,3 +101,60 @@ Funções
     
 Resolução : https://github.com/alura-cursos/js-curso-2/tree/desafio_2
 ---------------------------------------------------------------------------------------------------
+
+Reiniciando o jogo
+
+1 ) Crie uma função que calcule o índice de massa corporal (IMC) de uma pessoa, a partir de sua altura, em metros, e peso, em quilogramas, que serão recebidos como parâmetro.
+
+    function imc ( mt,kg ){
+        return kg/(mt*mt);
+    }
+
+    console.log(imc(1.70,65));
+
+2 ) Crie uma função que calcule o valor do fatorial de um número passado como parâmetro.
+
+    function fatorial ( valor ){
+        let fatorial = 1;
+        for(let i =1; i <= valor; i++){
+            fatorial *=i
+    }
+    return fatorial;
+    }
+
+    console.log(fatorial(5));
+
+3 ) Crie uma função que converte um valor em dólar, passado como parâmetro, e retorna o valor equivalente em reais. Para isso, considere a cotação do dólar igual a R$4,80.
+
+    function converter ( reais ){
+        return reais*4.80;
+    }
+
+    console.log(converter(2));
+
+4 ) Crie uma função que mostre na tela a área e o perímetro de uma sala retangular, utilizando altura e largura que serão dadas como parâmetro.
+
+    function perimetro ( altura,largura ){
+        return (altura*2)+(largura*2);
+    }
+
+    console.log(perimetro(2,3));
+
+5 ) Crie uma função que mostre na tela a área e o perímetro de uma sala circular, utilizando seu raio que será fornecido como parâmetro. Considere Pi = 3,14.
+
+    function perimetroRedondo ( raio ){
+        Pi = 3.14;
+        return 2*Pi*raio;
+    }
+
+    console.log(perimetroRedondo(10));
+
+6 ) Crie uma função que mostre na tela a tabuada de um número dado como parâmetro.
+
+    function tabuada ( valor ){
+        for(let i = 1; i <=10; i++){
+            console.log(`${valor} x ${i} = ${valor *1}`)
+        }
+        }
+
+    tabuada(5);

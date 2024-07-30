@@ -1,18 +1,27 @@
 // Textos
 let numeroSecreto = gerarNumeroAleatorio();
+let numeroGerados = [];
+console.log(numeroSecreto);
 let tentativas = 1;
 
 function gerarNumeroAleatorio(){
-    return parseInt(Math.random() * 10 + 1);
+    let numeroEscolhido = parseInt(Math.random() * 10 + 1);
+    if(NumerosSorteados.includes(numeroEscolhido)){
+        
+    }
  }
 
 function exibirTextoNaTela(tag, texto){
     let titulo = document.querySelector(tag);
     titulo.innerHTML = texto;
+}   
+
+function exibirMensagemInicial (){
+    exibirTextoNaTela ( 'h1', 'Jogo do número secreto');
+    exibirTextoNaTela ( 'p', 'Escolha um número entre 1 e 10');
 }
 
-exibirTextoNaTela ( 'h1', 'Jogo do número secreto');
-exibirTextoNaTela ( 'p', 'Escolha um número entre 1 e 10');
+exibirMensagemInicial ();
 
 //------------------------------------------------------------------------------------------------
 // Ação botões
@@ -20,13 +29,15 @@ exibirTextoNaTela ( 'p', 'Escolha um número entre 1 e 10');
 function verificarChute(){
         
     let chute = document.querySelector("input").value;
+    let tentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
     console.log (numeroSecreto);
     //console.log( chute == numeroSecreto);
 
     if ( chute == numeroSecreto){
         exibirTextoNaTela ( 'h1', 'Acertou!');
-        let mensagemTentativa = `Você acertou em ${tentativas} tentativas`
+        let mensagemTentativa = `Você acertou em ${tentativas} ${tentativa}`;
         exibirTextoNaTela ( 'p', `${mensagemTentativa}`);
+        document.getElementById('reiniciar').removeAttribute('disabled');
     }else{
         if ( chute > numeroSecreto ){ 
             exibirTextoNaTela ( 'h1', 'Quase!');
@@ -37,27 +48,19 @@ function verificarChute(){
         }
     }
     tentativas++;
+    limpaCampo();
 }
 
-function soma(){
-
-    let numero1 = parseFloat(prompt("Digite um primeiro número"));
-    let numero2 = parseFloat(prompt("Digite um segundo número"));
-    let soma = numero1 + numero2;
-
-    alert(`Você digitou ${numero1} e ${numero2} somados deles resultam em : ${soma}`)
-    
+function limpaCampo(){
+    chute = document.querySelector('input');
+    chute.value ='';
 }
 
-/*function soma() {
+function reiniciar(){
+    numeroSecreto = gerarNumeroAleatorio();
+    limpaCampo();
+    tentativas = 1;
+    exibirMensagemInicial ();
+    document.getElementById('reiniciar').setAttribute('disabled', true);
+}
 
-    let numero1 = parseFloat(prompt("Digite um primeiro número"));
-    let numero2 = parseFloat(prompt("Digite um segundo número"));
-    let soma = numero1 + numero2;
-
-    if (!isNaN(numero1) && !isNaN(numero2)) {
-        alert(`Você digitou ${numero1} e ${numero2}. Somados, deles resultam em: ${soma}`);
-    } else {
-        alert("Por favor, digite números válidos.");
-    }
-}*/
